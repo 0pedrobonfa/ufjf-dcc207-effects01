@@ -1,12 +1,13 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useRef, useState } from 'react'
 import './App.css'
 
 function App() {
   const [estadoContado, setEstadoContador] = useState(0);
   let variavelContador = 0;
+  const refContador = useRef(0);
 
+  //ref faz atualizar quando o estado muda. A variável mostra a mudança na tela com o redesenho do estado
+  //não dispara redesenho; ele atualiza o valor da variável
   return (
     <>
       <div className="card">
@@ -24,6 +25,15 @@ function App() {
           console.log("variavelContador", variavelContador);
           }}>
         variavelContador {variavelContador}
+        </button>
+      </div>
+
+      <div>        
+        <button onClick={() => {
+          refContador.current = refContador.current+1;
+          console.log("refContador", refContador.current);
+          }}>
+        refContador {refContador.current}(!)
         </button>
       </div>
     </>
