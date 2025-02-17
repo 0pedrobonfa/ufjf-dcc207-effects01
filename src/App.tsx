@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import './App.css'
 import Prompt from './Prompt';
+import Tela from './Tela';
 
 function App() {
   const [estadoContado, setEstadoContador] = useState(0);
@@ -11,8 +12,9 @@ function App() {
   //não dispara redesenho; ele atualiza o valor da variável
   return (
     <>
-    
+
       <Prompt></Prompt>
+      <Tela></Tela>
 
       <div className="card">
         <button onClick={() => {
