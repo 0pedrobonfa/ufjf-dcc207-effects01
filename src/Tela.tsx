@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
+const A = 2.0;
+const V = 1.0;
+
 export default function Tela()
 {
     const [posicao, setPosicao] = useState({x:150,y:75});
@@ -10,7 +13,10 @@ export default function Tela()
         vx:0,
         ax:0,
         t0:0,
-        dt:0
+        dt:0,
+        y:0,
+        vy:0,
+        ay:0
     })
     useEffect(()=>{
         refAnimation.current = requestAnimationFrame(desenhaQuadro);
@@ -25,9 +31,12 @@ export default function Tela()
     function desenhaQuadro(t:number){
         const m = refMov.current;
         m.dt = Math.min(t-m.t0, 32)/1000;
-        m.ax = 10;
+        m.ax = A*(posicao.x - m.x) -V*m.vx;
         m.vx +=m.ax*m.dt;
         m.x += m.vx*m.dt;
+        m.ay = A*(posicao.y - m.y) -V*m.vy;
+        m.vy +=m.ay*m.dt;
+        m.y += m.vy*m.dt;
         const canvas = refCanvas.current;
         if(!canvas) return;
         const ctx = canvas.getContext("2d");
