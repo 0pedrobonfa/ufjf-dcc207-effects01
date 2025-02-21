@@ -30,7 +30,7 @@ export default function Tela({posicao}:TelaProps){
             };
         };
     }
-    ,[]);
+    ,[posicao]);
 
     function desenhaQuadro(t:number){
         const m = refMov.current;
