@@ -59,11 +59,7 @@ export default function Tela({posicao}:TelaProps){
     }
 
 
-    return (<canvas ref={refCanvas} onClick={()=>{
-        setPosicao({...posicao, x:posicao.x + 5});
-    }}>
-
-        
+    return (<canvas ref={refCanvas}>
     </canvas>
     )
 }

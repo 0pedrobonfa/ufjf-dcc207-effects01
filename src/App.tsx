@@ -14,7 +14,7 @@ function App() {
   return (
     <>
 
-      <Prompt></Prompt>
+      <Prompt onPosicaoChange={setPosicao}></Prompt>
       <Tela posicao={posicao}></Tela>
 
       <div className="card">
