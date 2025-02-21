@@ -5,6 +5,7 @@ import Tela from './Tela';
 
 function App() {
   const [estadoContado, setEstadoContador] = useState(0);
+  const [posicao, setPosicao] = useState({x:150,y:75});
   let variavelContador = 0;
   const refContador = useRef(0);
 
@@ -14,7 +15,7 @@ function App() {
     <>
 
       <Prompt></Prompt>
-      <Tela></Tela>
+      <Tela posicao={posicao}></Tela>
 
       <div className="card">
         <button onClick={() => {

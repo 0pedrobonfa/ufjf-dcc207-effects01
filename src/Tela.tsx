@@ -3,9 +3,13 @@ import { useEffect, useRef, useState } from "react";
 const A = 2.0;
 const V = 1.0;
 
-export default function Tela()
-{
-    const [posicao, setPosicao] = useState({x:150,y:75});
+type TelaProps= {
+    posicao:{
+        x:number;
+        y:number;
+    }
+}
+export default function Tela({posicao}:TelaProps){
     const refCanvas = useRef<HTMLCanvasElement|null>(null);
     const refAnimation = useRef<number | null>(null);
     const refMov = useRef({
@@ -45,9 +49,9 @@ export default function Tela()
         ctx.fillRect(0,0,canvas.width, canvas.height);
         ctx.fillStyle = "lightgreen";
         ctx.beginPath()
-        ctx.ellipse(m.x, posicao.y, 5,5,0,0,2*Math.PI,false);
+        ctx.ellipse(m.x, m.y, 5,5,0,0,2*Math.PI,false);
         ctx.closePath();
-        ctx.ellipse(m.x,posicao.y,5,5,0,0,2*Math.PI,false);
+        ctx.ellipse(m.x,m.y,5,5,0,0,2*Math.PI,false);
         ctx.stroke();
         ctx.fill();
         m.t0 = t;
