@@ -27,9 +27,12 @@ export default function Prompt({onPosicaoChange}:PromptProps){
     }
 
     useEffect(()=>{
-        if(!refRelogio.current && execucao){
+        if(!refRelogio.current){
             console.log("Inicia relógio");
             refRelogio.current = setInterval(()=>{
+                if(!execucao){
+                    return;
+                }
                 console.log(lista[prox]);
                 setProx((p)=>p+1);
             },3000);
